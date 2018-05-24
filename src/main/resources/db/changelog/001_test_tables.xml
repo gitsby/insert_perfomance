@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="maxim" id="create_tables">
+        <sql endDelimiter=";;"><![CDATA[
+create table test_object(id character varying(32) not null, column1 character varying(300), column2 character varying(300), column3 character varying(300), column4 character varying(3000), column5 character varying(3000), column6 character varying(3000), primary key (id));;
+create table m_test_object_column1(id character varying(32) not null, ts timestamp without time zone not null default clock_timestamp(), column1 character varying(300),  primary key (id, ts));;
+create table m_test_object_column2(id character varying(32) not null, ts timestamp without time zone not null default clock_timestamp(), column2 character varying(300),  primary key (id, ts));;
+create table m_test_object_column3(id character varying(32) not null, ts timestamp without time zone not null default clock_timestamp(), column3 character varying(300),  primary key (id, ts));;
+create table m_test_object_column4(id character varying(32) not null, ts timestamp without time zone not null default clock_timestamp(), column4 character varying(3000),  primary key (id, ts));;
+create table m_test_object_column5(id character varying(32) not null, ts timestamp without time zone not null default clock_timestamp(), column5 character varying(3000),  primary key (id, ts));;
+create table m_test_object_column6(id character varying(32) not null, ts timestamp without time zone not null default clock_timestamp(), column6 character varying(3000),  primary key (id, ts));;
+
+alter table m_test_object_column1 add foreign key (id) references test_object(id);;
+alter table m_test_object_column2 add foreign key (id) references test_object(id);;
+alter table m_test_object_column3 add foreign key (id) references test_object(id);;
+alter table m_test_object_column4 add foreign key (id) references test_object(id);;
+alter table m_test_object_column5 add foreign key (id) references test_object(id);;
+alter table m_test_object_column6 add foreign key (id) references test_object(id);;
+   ]]></sql>
+    </changeSet>
+</databaseChangeLog>
